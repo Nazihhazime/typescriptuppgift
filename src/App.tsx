@@ -72,10 +72,12 @@ function ageInSeconds(age: number): number {
   return Math.round(age * 364 * 24 * 60 * 60);
 }
 
+// EXTRAUPPGIFTER
+
 function area(form: string, width: number, heigth: number): number {
-  if (form === "circle") return (width / 2) ** 2 * Math.PI;
-  if (form === "triangle") return (heigth * width) / 2;
-  return heigth * width;
+  if (form === "circle") return circleArea(width / 2);
+  if (form === "triangle") return triangleArea(width, heigth);
+  return rectangelArea(width, heigth);
 }
 
 function checkSpeed(speed: number): string | number {
@@ -83,9 +85,11 @@ function checkSpeed(speed: number): string | number {
   const points: number = Math.floor((speed - speedlimit) / 5);
 
   if (speed <= speedlimit) return "OK";
-  if (points > 12) return "Indraget Körkort";
+  if (points >= 12) return "Indraget Körkort";
   return points;
 }
+
+//The App-component
 
 function App() {
   return <div>{checkSpeed(71)}</div>;
